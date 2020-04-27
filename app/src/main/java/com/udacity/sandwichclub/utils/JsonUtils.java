@@ -19,12 +19,12 @@ public class JsonUtils {
             JSONObject sanwichNameJsonObject = selectedSandwichJsonObject.getJSONObject("name");
 
             selectedSandwich = new Sandwich(
-                    getJSONString(sanwichNameJsonObject, "mainName"),
-                    convertJSONArrayToList(getJSONArray(sanwichNameJsonObject, "alsoKnownAs")),
-                    getJSONString(selectedSandwichJsonObject, "placeOfOrigin"),
-                    getJSONString(selectedSandwichJsonObject, "description"),
-                    getJSONString(selectedSandwichJsonObject, "image"),
-                    convertJSONArrayToList(getJSONArray(selectedSandwichJsonObject, "ingredients"))
+                    getJsonString(sanwichNameJsonObject, "mainName"),
+                    convertJsonArrayToList(getJsonArray(sanwichNameJsonObject, "alsoKnownAs")),
+                    getJsonString(selectedSandwichJsonObject, "placeOfOrigin"),
+                    getJsonString(selectedSandwichJsonObject, "description"),
+                    getJsonString(selectedSandwichJsonObject, "image"),
+                    convertJsonArrayToList(getJsonArray(selectedSandwichJsonObject, "ingredients"))
             );
         } catch (JSONException e) {
             e.printStackTrace();
@@ -33,15 +33,15 @@ public class JsonUtils {
         return selectedSandwich;
     }
 
-    private static String getJSONString(JSONObject sandwichObject, String id) throws JSONException {
+    private static String getJsonString(JSONObject sandwichObject, String id) throws JSONException {
         return sandwichObject.getString(id);
     }
 
-    private static JSONArray getJSONArray(JSONObject sandwichObject, String id) throws JSONException {
+    private static JSONArray getJsonArray(JSONObject sandwichObject, String id) throws JSONException {
         return sandwichObject.getJSONArray(id);
     }
 
-    private static List<String> convertJSONArrayToList(JSONArray jsonArray) {
+    private static List<String> convertJsonArrayToList(JSONArray jsonArray) {
         List<String> jsonList = new ArrayList<>();
 
         try {
